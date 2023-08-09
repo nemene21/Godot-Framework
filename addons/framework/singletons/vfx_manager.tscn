@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://hd201vrrlrfq"]
+
+[ext_resource type="Script" path="res://addons/framework/singletons/vfx_manager.gd" id="1_vexjk"]
+
+[node name="VfxManager" type="Node"]
+script = ExtResource("1_vexjk")

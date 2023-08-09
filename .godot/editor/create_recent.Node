@@ -1,0 +1,8 @@
+ColorRect
+Camera2D
+TextureRect
+Label
+CanvasLayer
+AnimationPlayer
+Node
+Timer

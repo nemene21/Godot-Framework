@@ -1,0 +1,22 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://dygen1kimxbur"]
+
+[sub_resource type="Curve" id="Curve_1hrky"]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.0618557, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.742582, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3nmbc"]
+curve = SubResource("Curve_1hrky")
+
+[resource]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_3nmbc")
+color = Color(1, 0, 0, 1)

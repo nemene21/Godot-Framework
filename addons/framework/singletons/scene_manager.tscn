@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6hhn57g5yxig"]
+
+[ext_resource type="Script" path="res://addons/framework/singletons/scene_manager.gd" id="1_nwn4h"]
+[ext_resource type="Shader" path="res://addons/framework/singletons/scene_manager.gdshader" id="2_f3tdm"]
+[ext_resource type="Texture2D" uid="uid://df8bkbgbcnej6" path="res://addons/framework/singletons/transition_textures/star.png" id="3_k8tnv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xr4o5"]
+shader = ExtResource("2_f3tdm")
+shader_parameter/animation = 0.0
+shader_parameter/offset = null
+shader_parameter/res = Vector2(320, 180)
+shader_parameter/transition_texture = ExtResource("3_k8tnv")
+
+[sub_resource type="Animation" id="Animation_h23r1"]
+resource_name = "transition"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionQuad:material:shader_parameter/animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, -2),
+"update": 0,
+"values": [0.5, 2.0]
+}
+
+[sub_resource type="Animation" id="Animation_dxh4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionQuad:material:shader_parameter/animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6lby6"]
+_data = {
+"RESET": SubResource("Animation_dxh4p"),
+"transition": SubResource("Animation_h23r1")
+}
+
+[node name="SceneManager" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_nwn4h")
+
+[node name="TransitionQuad" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xr4o5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.75096e-05
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6lby6")
+}

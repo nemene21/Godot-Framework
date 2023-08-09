@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf5kg6uqqlv8d"]
+
+[ext_resource type="Script" path="res://addons/framework/singletons/post_processing.gd" id="1_j5q7p"]
+[ext_resource type="Shader" path="res://addons/framework/singletons/post_processing.gdshader" id="2_j8lyc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nnp6l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ah1yj"]
+noise = SubResource("FastNoiseLite_nnp6l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yiyum"]
+shader = ExtResource("2_j8lyc")
+shader_parameter/vignette_color = null
+shader_parameter/vignette_noisiness = 0.0
+shader_parameter/vignette_noise_warp_speed = 0.0
+shader_parameter/centre = Vector2(0.5, 0.5)
+shader_parameter/distance_pow = 4.0
+shader_parameter/distance_multiplyer = 2.0
+shader_parameter/chromatic_abberation = 0.0
+shader_parameter/res = Vector2(320, 180)
+shader_parameter/warp = 0.0
+shader_parameter/vignette_noise = SubResource("NoiseTexture2D_ah1yj")
+
+[node name="PostProcessing" type="CanvasLayer"]
+script = ExtResource("1_j5q7p")
+
+[node name="PostProcessingQuad" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yiyum")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

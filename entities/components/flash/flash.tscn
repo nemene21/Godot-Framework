@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://5tamy4payd8l"]
+
+[ext_resource type="Script" path="res://entities/components/flash/flash.gd" id="1_eqce0"]
+
+[node name="Flash" type="Timer"]
+one_shot = true
+script = ExtResource("1_eqce0")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

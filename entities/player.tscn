@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfgtctcmlskph"]
+
+[ext_resource type="Script" path="res://entities/player.gd" id="1_687nu"]
+[ext_resource type="Script" path="res://entities/ecs/entity.gd" id="1_ink5w"]
+[ext_resource type="Texture2D" uid="uid://c8bikfsj3a5ly" path="res://icon.svg" id="1_vjg0s"]
+[ext_resource type="Shader" path="res://flash.gdshader" id="2_bc4ku"]
+[ext_resource type="PackedScene" uid="uid://b7xhu415k72h5" path="res://entities/components/fire_effect/fire_effect.tscn" id="4_jw1e2"]
+[ext_resource type="PackedScene" uid="uid://5tamy4payd8l" path="res://entities/components/flash/flash.tscn" id="6_hmgpg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vp34t"]
+resource_local_to_scene = true
+shader = ExtResource("2_bc4ku")
+shader_parameter/flash = null
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_687nu")
+acceleration = 2500.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vp34t")
+texture = ExtResource("1_vjg0s")
+hframes = 3
+vframes = 2
+
+[node name="Entity" type="Node2D" parent="."]
+script = ExtResource("1_ink5w")
+
+[node name="FireEffect" parent="Entity" node_paths=PackedStringArray("sprite") instance=ExtResource("4_jw1e2")]
+sprite = NodePath("../../Sprite")
+
+[node name="Flash" parent="Entity" node_paths=PackedStringArray("flashable") instance=ExtResource("6_hmgpg")]
+flashable = NodePath("../../Sprite")
