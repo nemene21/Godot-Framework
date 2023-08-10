@@ -18,3 +18,4 @@ res://world.tscn
 res://entities/player.gd
 res://addons/framework/singletons/audio_manager.gd
 res://addons/framework/singletons/scene_manager.gdshader
+res://addons/framework/singletons/global.gd

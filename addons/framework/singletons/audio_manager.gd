@@ -1,14 +1,22 @@
 extends Node
 
 func _ready() -> void:
-	add_track("1", "res://sounds/music/1.wav")
-	add_track("2", "res://sounds/music/2.wav")
+	import_sounds_and_tracks()
 
 # Sound effects
 var sounds: Dictionary = {}
 
 @onready var last_track_tween: Tween
 @onready var new_track_tween:  Tween
+
+@export var sounds_to_add: Array[String]
+@export var tracks_to_add: Array[String]
+
+func is_sound_file(path: String) -> bool:
+	return path.ends_with(".wav") or path.ends_with(".mp3") or path.ends_with(".ogg")
+	
+func import_sounds_and_tracks() -> void:
+	pass
 
 func add_sound(name : String, path : String) -> void:
 	sounds[name] = load(path)
