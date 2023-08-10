@@ -9,14 +9,24 @@ var sounds: Dictionary = {}
 @onready var last_track_tween: Tween
 @onready var new_track_tween:  Tween
 
-@export var sounds_to_add: Array[String]
-@export var tracks_to_add: Array[String]
+@export var sounds_to_add: Array[Resource]
+@export var tracks_to_add: Array[Resource]
 
 func is_sound_file(path: String) -> bool:
 	return path.ends_with(".wav") or path.ends_with(".mp3") or path.ends_with(".ogg")
-	
+
 func import_sounds_and_tracks() -> void:
-	pass
+	for track_resource in tracks_to_add:
+		var path: String = track_resource.resource_path
+		var name: String = path.right(len(path) - path.rfind("/") - 1)
+		name = Global.remove_file_ending(name)
+		add_track(name, path)
+	
+	for sound_resource in sounds_to_add:
+		var path: String = sound_resource.resource_path
+		var name: String = path.right(len(path) - path.rfind("/") - 1)
+		name = Global.remove_file_ending(name)
+		add_sound(name, path)
 
 func add_sound(name : String, path : String) -> void:
 	sounds[name] = load(path)
@@ -71,7 +81,7 @@ func add_track(name : String, path : String) -> void:
 func play_track(name : String, fade_time : float = 0.5) -> void:
 	if name == last_track: return
 	
-	new_track_tween.stop()
+	if new_track_tween != null: new_track_tween.stop()
 	new_track_tween = create_tween()
 	new_track_tween.tween_property(tracks[name], "volume_db", 0, fade_time)
 	
@@ -81,7 +91,7 @@ func play_track(name : String, fade_time : float = 0.5) -> void:
 	
 	if last_track != null:
 		var last_track_node: AudioStreamPlayer = tracks[last_track]
-		last_track_tween.stop()
+		if last_track_tween != null: last_track_tween.stop()
 		last_track_tween = create_tween()
 		last_track_tween.tween_property(last_track_node, "volume_db", -80, fade_time)
 

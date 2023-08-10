@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://hd201vrrlrfq"]
+[gd_scene load_steps=5 format=3 uid="uid://hd201vrrlrfq"]
 
 [ext_resource type="Script" path="res://addons/framework/singletons/vfx_manager.gd" id="1_vexjk"]
+[ext_resource type="PackedScene" uid="uid://j3hnim0pawye" path="res://scenes/vfx/exploding_sprite.tscn" id="2_kw01k"]
+[ext_resource type="PackedScene" uid="uid://dwbn82ffn13g1" path="res://scenes/vfx/realistic_shockwave.tscn" id="3_171c1"]
+[ext_resource type="PackedScene" uid="uid://dy3o31hujmoxi" path="res://scenes/vfx/shockwave.tscn" id="4_jgxlq"]
 
 [node name="VfxManager" type="Node"]
 script = ExtResource("1_vexjk")
+vfx_to_add = Array[Resource]([ExtResource("2_kw01k"), ExtResource("3_171c1"), ExtResource("4_jgxlq")])

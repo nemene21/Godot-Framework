@@ -19,3 +19,11 @@ res://entities/player.gd
 res://addons/framework/singletons/audio_manager.gd
 res://addons/framework/singletons/scene_manager.gdshader
 res://addons/framework/singletons/global.gd
+res://scenes/vfx/realistic_shockwave.tscn
+res://scenes/vfx/shockwave.tscn
+res://scenes/vfx/exploding_sprite.tscn
+res://scenes/vfx/exploding_sprite.gd
+res://scenes/vfx/exploding_sprite_shard.gd
+res://entities/components/fire_effect/fire_effect.gd
+res://scenes/vfx/realistic_shockwave.gdshader
+res://scenes/vfx/shockwave.gdshader

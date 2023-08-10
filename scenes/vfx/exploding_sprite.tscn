@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://j3hnim0pawye"]
+
+[ext_resource type="Script" path="res://scenes/vfx/exploding_sprite.gd" id="1_ej0mx"]
+
+[node name="exploding_sprite" type="Polygon2D"]
+texture_repeat = 2
+polygon = PackedVector2Array(-0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5)
+script = ExtResource("1_ej0mx")

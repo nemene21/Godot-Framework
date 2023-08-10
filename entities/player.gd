@@ -5,7 +5,8 @@ extends CharacterBody2D
 
 @onready var entity: Entity = $Entity
 
-var silly := false
+func _ready() -> void:
+	VfxManager.set_target(get_parent())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -14,12 +15,8 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		entity.get_component("Flash").flash()
-		silly = !silly
-		if silly:
-			AudioManager.play_track("1")
-		else:
-			AudioManager.play_track("2")
+		VfxManager.play_vfx("shockwave", global_position - Vector2(64, 0))
+		VfxManager.play_vfx("realistic_shockwave", global_position + Vector2(64, 0))
 	
 	if Input.is_action_just_pressed("exit"):
 		SceneManager.transition_scene("res://world.tscn")

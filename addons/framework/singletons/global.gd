@@ -15,7 +15,7 @@ func get_files(path: String) -> Array[String]:
 
 func remove_file_ending(filename: String) -> String:
 	var dot = filename.find(".")
-	return filename.left(dot - 1)
+	return filename.left(dot)
 
 var time := .0
 func _process(delta) -> void:
