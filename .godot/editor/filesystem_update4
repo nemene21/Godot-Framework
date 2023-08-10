@@ -27,3 +27,7 @@ res://scenes/vfx/exploding_sprite_shard.gd
 res://entities/components/fire_effect/fire_effect.gd
 res://scenes/vfx/realistic_shockwave.gdshader
 res://scenes/vfx/shockwave.gdshader
+res://entities/components/health_component/health_component.tscn
+res://entities/components/health/health_component.tscn
+res://entities/components/health/health.tscn
+res://entities/components/health/health.gd
