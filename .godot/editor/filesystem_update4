@@ -31,3 +31,7 @@ res://entities/components/health_component/health_component.tscn
 res://entities/components/health/health_component.tscn
 res://entities/components/health/health.tscn
 res://entities/components/health/health.gd
+res://entities/components/hurtbox/hurtbox.tscn
+res://entities/components/hitbox/hitbox.tscn
+res://entities/components/hurtbox/hurtbox.gd
+res://entities/components/hitbox/hitbox.gd

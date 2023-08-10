@@ -5,10 +5,7 @@ class_name Hurtbox
 
 var component: ComponentData
 
-signal took_damage(amount: float, kb_dir: Vector2)
+signal got_hit(amount: float, kb_dir: Vector2)
 
-func _ready() -> void:
-	add_to_group("Hurtbox")
-
-func take_damage(amount: float, kb_dir: Vector2) -> void:
-	took_damage.emit(amount, kb_dir)
+func hit(amount: float, kb_dir: Vector2) -> void:
+	got_hit.emit(amount, kb_dir)

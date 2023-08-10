@@ -11,7 +11,7 @@ uniform float distance_multiplyer : hint_range(0.0, 4.0, 0.1);
 uniform float chromatic_abberation : hint_range(.0, 1.0);
 uniform vec2 res = vec2(320, 180);
 
-uniform float warp : hint_range(0.0, 10.0, 0.1);
+uniform float warp : hint_range(-10.0, 10.0, 0.1);
 
 vec4 lerp(vec4 a, vec4 b, float c) {
 	return a + (b - a) * c;

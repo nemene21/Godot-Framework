@@ -1,5 +1,4 @@
 res://entities/components/hurtbox
-res://entities/components/health_component
 res://addons/framework/singletons
 res://
 res://entities/components/flash
