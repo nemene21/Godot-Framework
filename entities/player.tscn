@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfgtctcmlskph"]
+[gd_scene load_steps=11 format=3 uid="uid://bfgtctcmlskph"]
 
 [ext_resource type="Script" path="res://entities/player.gd" id="1_687nu"]
 [ext_resource type="Script" path="res://entities/ecs/entity.gd" id="1_ink5w"]
@@ -6,12 +6,17 @@
 [ext_resource type="Shader" path="res://flash.gdshader" id="2_bc4ku"]
 [ext_resource type="PackedScene" uid="uid://b7xhu415k72h5" path="res://entities/components/fire_effect/fire_effect.tscn" id="4_jw1e2"]
 [ext_resource type="PackedScene" uid="uid://5tamy4payd8l" path="res://entities/components/flash/flash.tscn" id="6_hmgpg"]
+[ext_resource type="PackedScene" uid="uid://iiwudjl4wglb" path="res://entities/components/hurtbox/hurtbox.tscn" id="7_6c3av"]
+[ext_resource type="PackedScene" uid="uid://sij4mgl0we5" path="res://entities/components/health/health.tscn" id="8_hvo1n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vp34t"]
 resource_local_to_scene = true
 shader = ExtResource("2_bc4ku")
 shader_parameter/flash = null
 shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x31mo"]
+size = Vector2(32, 64)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_687nu")
@@ -30,3 +35,20 @@ sprite = NodePath("../../Sprite")
 
 [node name="Flash" parent="Entity" node_paths=PackedStringArray("flashable") instance=ExtResource("6_hmgpg")]
 flashable = NodePath("../../Sprite")
+
+[node name="Hurtbox" parent="Entity" instance=ExtResource("7_6c3av")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entity/Hurtbox"]
+shape = SubResource("RectangleShape2D_x31mo")
+
+[node name="Health" parent="Entity" instance=ExtResource("8_hvo1n")]
+max_hp = 4.0
+hp = 4.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = 4.0
+offset_right = -24.0
+offset_bottom = 27.0
+
+[connection signal="died" from="Entity/Health" to="." method="_on_health_died"]

@@ -1,24 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7j084o2yeyx2"]
+[gd_scene load_steps=5 format=3 uid="uid://c7j084o2yeyx2"]
 
 [ext_resource type="PackedScene" uid="uid://bfgtctcmlskph" path="res://entities/player.tscn" id="1_a4sha"]
+[ext_resource type="Texture2D" uid="uid://c8bikfsj3a5ly" path="res://icon.svg" id="2_jai2p"]
+[ext_resource type="PackedScene" uid="uid://cdgv2j3ve20aq" path="res://entities/components/hitbox/hitbox.tscn" id="3_xxlwa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg5np"]
+size = Vector2(128, 126.867)
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_a4sha")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 4
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0.164706, 0.2, 1)
+z_index = 1
+position = Vector2(251.5, 81)
+scale = Vector2(1.19531, 1.76563)
+texture = ExtResource("2_jai2p")
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 70.0
-offset_top = 57.0
-offset_right = 165.0
-offset_bottom = 83.0
-text = "NON pixel PERFECT text"
+[node name="hitbox" parent="Icon" instance=ExtResource("3_xxlwa")]
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/hitbox"]
+position = Vector2(0, 1.13274)
+shape = SubResource("RectangleShape2D_qg5np")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 13.0
-offset_top = 109.0
-offset_right = 180.0
-offset_bottom = 135.0
-text = "Pixel perfetc TEcKSth!"
+offset_left = 41.0
+offset_top = 144.0
+offset_right = 170.0
+offset_bottom = 170.0
+text = "Evil square :(    ->"

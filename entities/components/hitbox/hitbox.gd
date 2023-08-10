@@ -11,7 +11,7 @@ signal hit_hurtbox(hurtbox: Hurtbox, damage: float, kb: Vector2)
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Hurtbox"):
 		var hurtbox = area as Hurtbox
-		
+		print("something hitted?")
 		var kb = static_kb
 		if kb == Vector2.ZERO:
 			kb = global_position.direction_to(hurtbox.global_position)

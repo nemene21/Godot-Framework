@@ -5,7 +5,9 @@ class_name Hurtbox
 
 var component: ComponentData
 
-signal got_hit(amount: float, kb_dir: Vector2)
+signal got_hit(damage: float, kb_dir: Vector2)
 
-func hit(amount: float, kb_dir: Vector2) -> void:
-	got_hit.emit(amount, kb_dir)
+func hit(damage: float, kb_dir: Vector2) -> void:
+	if component.entity.has_component("Health"):
+		component.entity.get_component("Health").hurt(damage)
+	got_hit.emit(damage, kb_dir)

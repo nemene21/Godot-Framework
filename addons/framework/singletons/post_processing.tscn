@@ -18,7 +18,7 @@ shader_parameter/distance_pow = 4.0
 shader_parameter/distance_multiplyer = 2.0
 shader_parameter/chromatic_abberation = 0.0
 shader_parameter/res = Vector2(320, 180)
-shader_parameter/warp = -1.0
+shader_parameter/warp = 0.0
 shader_parameter/vignette_noise = SubResource("NoiseTexture2D_ah1yj")
 
 [node name="PostProcessing" type="CanvasLayer"]

@@ -1,10 +1,11 @@
+CollisionShape2D
+Label
 Area2D
 Node
 Node2D
 ColorRect
 Camera2D
 TextureRect
-Label
 CanvasLayer
 AnimationPlayer
 Timer

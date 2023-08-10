@@ -14,9 +14,9 @@ func _process(delta: float) -> void:
 	velocity = velocity.move_toward(input * speed, acceleration * delta)
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		VfxManager.play_vfx("shockwave", global_position - Vector2(64, 0))
-		VfxManager.play_vfx("realistic_shockwave", global_position + Vector2(64, 0))
-	
-	if Input.is_action_just_pressed("exit"):
-		SceneManager.transition_scene("res://world.tscn")
+	$Label.text = str(entity.get_component("Health").hp)
+
+
+func _on_health_died() -> void:
+	VfxManager.explode_sprite($Sprite)
+	queue_free()
