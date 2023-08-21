@@ -8,3 +8,6 @@ res://addons/framework/singletons/post_processing.gdshader
 res://addons/framework/singletons/scene_manager.gdshader
 res://flash.gdshader
 res://entities/components/fire_effect/fire_particles.tres
+res://addons/framework/singletons/post_processing.tscn
+res://world.tscn
+res://entities/components/soft_collision/soft_collision.tscn

@@ -13,6 +13,7 @@ size = Vector2(128, 126.867)
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_a4sha")]
+speed = 500.0
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1, 0.164706, 0.2, 1)
