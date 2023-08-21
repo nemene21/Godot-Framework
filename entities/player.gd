@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed := 500.0
+@export var speed := 5000.0
 @export var acceleration := 300.0
 
 @onready var entity: Entity = $Entity
