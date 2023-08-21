@@ -1,3 +1,10 @@
 res://entities/components/hitbox/hitbox.gd
 res://entities/components/health/health.gd
 res://entities/player.gd
+res://entities/player.tscn
+res://scenes/vfx/realistic_shockwave.gdshader
+res://scenes/vfx/shockwave.gdshader
+res://addons/framework/singletons/post_processing.gdshader
+res://addons/framework/singletons/scene_manager.gdshader
+res://flash.gdshader
+res://entities/components/fire_effect/fire_particles.tres

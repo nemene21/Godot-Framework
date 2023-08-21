@@ -24,7 +24,6 @@ size = Vector2(32, 64)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_687nu")
-speed = null
 acceleration = 600.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
