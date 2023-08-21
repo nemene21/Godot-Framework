@@ -1,6 +1,6 @@
 CollisionShape2D
-Label
 Area2D
+Label
 Node
 Node2D
 ColorRect

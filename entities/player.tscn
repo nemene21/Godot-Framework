@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfgtctcmlskph"]
+[gd_scene load_steps=13 format=3 uid="uid://bfgtctcmlskph"]
 
 [ext_resource type="Script" path="res://entities/player.gd" id="1_687nu"]
 [ext_resource type="Script" path="res://entities/ecs/entity.gd" id="1_ink5w"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5tamy4payd8l" path="res://entities/components/flash/flash.tscn" id="6_hmgpg"]
 [ext_resource type="PackedScene" uid="uid://iiwudjl4wglb" path="res://entities/components/hurtbox/hurtbox.tscn" id="7_6c3av"]
 [ext_resource type="PackedScene" uid="uid://sij4mgl0we5" path="res://entities/components/health/health.tscn" id="8_hvo1n"]
+[ext_resource type="PackedScene" uid="uid://ck0etsskracoo" path="res://entities/components/soft_collision/soft_collision.tscn" id="9_hka2x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vp34t"]
 resource_local_to_scene = true
@@ -18,9 +19,12 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x31mo"]
 size = Vector2(32, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5e0eb"]
+size = Vector2(32, 64)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_687nu")
-acceleration = 2500.0
+acceleration = 600.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_vp34t")
@@ -44,6 +48,12 @@ shape = SubResource("RectangleShape2D_x31mo")
 [node name="Health" parent="Entity" instance=ExtResource("8_hvo1n")]
 max_hp = 4.0
 hp = 4.0
+
+[node name="SoftCollision" parent="Entity" node_paths=PackedStringArray("push_body") instance=ExtResource("9_hka2x")]
+push_body = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entity/SoftCollision"]
+shape = SubResource("RectangleShape2D_5e0eb")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -64.0

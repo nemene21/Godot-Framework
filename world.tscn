@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7j084o2yeyx2"]
+[gd_scene load_steps=7 format=3 uid="uid://c7j084o2yeyx2"]
 
 [ext_resource type="PackedScene" uid="uid://bfgtctcmlskph" path="res://entities/player.tscn" id="1_a4sha"]
 [ext_resource type="Texture2D" uid="uid://c8bikfsj3a5ly" path="res://icon.svg" id="2_jai2p"]
 [ext_resource type="PackedScene" uid="uid://cdgv2j3ve20aq" path="res://entities/components/hitbox/hitbox.tscn" id="3_xxlwa"]
+[ext_resource type="PackedScene" uid="uid://ck0etsskracoo" path="res://entities/components/soft_collision/soft_collision.tscn" id="4_gjo37"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qg5np"]
 size = Vector2(128, 126.867)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_muyyj"]
+
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_a4sha")]
+speed = 500.0
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1, 0.164706, 0.2, 1)
@@ -31,3 +35,10 @@ offset_top = 144.0
 offset_right = 170.0
 offset_bottom = 170.0
 text = "Evil square :(    ->"
+
+[node name="SoftCollision" parent="." instance=ExtResource("4_gjo37")]
+position = Vector2(82, 73)
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoftCollision"]
+shape = SubResource("CircleShape2D_muyyj")
